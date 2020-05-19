@@ -17,7 +17,7 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDAO userDAO;
-    private static String searchKey;
+    private static String searchKey="%%";
 
     public void init() {
         userDAO = new UserDAO();
@@ -83,11 +83,11 @@ public class UserServlet extends HttpServlet {
                     deleteUser(request, response);
                     break;
                 case "sortName":
-                    oderByName(request, response);
-                    break;
-                case "orderByNameSearch":
                     oderByNameSearch(request, response);
                     break;
+//                case "orderByNameSearch":
+//                    oderByNameSearch(request, response);
+//                    break;
                 case "":
                     listUser(request, response);
                     break;
@@ -104,7 +104,7 @@ public class UserServlet extends HttpServlet {
         System.out.println(searchKey);
         List<User> listUser = userDAO.orderByNameSearch(searchKey);
         request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/searchList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -121,7 +121,7 @@ public class UserServlet extends HttpServlet {
 
         List<User> listUser = userDAO.searchCountryList(searchKey);
         request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/searchList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request, response);
     }
 

@@ -245,8 +245,10 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public List<User> orderByNameSearch(String key) {
-        System.out.println(key);
         List<User> orderList = new ArrayList<>();
+//        if (key==""||key==null){
+//            String query=SELECT_ALL_USERS;
+//        }
         String query = ORDER_BY_NAME_SEARCH;
         Connection connection = getConnection();
         try {
@@ -266,5 +268,10 @@ public class UserDAO implements IUserDAO {
         }
 
         return orderList;
+    }
+
+    @Override
+    public void addUserTransaction(User user, int[] permision) {
+
     }
 }

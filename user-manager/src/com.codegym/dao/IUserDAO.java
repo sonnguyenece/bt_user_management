@@ -27,4 +27,6 @@ public interface IUserDAO {
     public List<User> orderByName();
 
     public List<User> orderByNameSearch(String key);
+
+    public void addUserTransaction(User user, int[] permision);
 }
